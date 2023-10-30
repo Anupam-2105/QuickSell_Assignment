@@ -2,18 +2,19 @@ import React, { useState, useEffect, useRef } from 'react';
 import { display_filter, down } from '../assets/images';
 import '../App.css'
 
-function Navbar({
+function FilterDropdown({
   selectedGrouping,
   setSelectedGrouping,
   selectedOrdering,
   setSelectedOrdering,
 }) {
-  const [groupingOptions] = useState(["User", "Priority", "Status"]);
-  const [orderingOptions] = useState(["Priority", "Title"]);
+  const [groupingOptions] = useState(["user", "priority", "status"]);
+  const [orderingOptions] = useState(["priority", "title"]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
   useEffect(() => {
+    // Add a click event listener to the document to close the dropdown when clicking outside
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsDropdownOpen(false);
@@ -80,4 +81,4 @@ function Navbar({
   );
 }
 
-export default Navbar;
+export default FilterDropdown;

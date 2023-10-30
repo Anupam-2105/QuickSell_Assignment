@@ -213,7 +213,7 @@ body {
 .profile-frame {
   width: 25px;
   height: 25px;
-  background-color: #FF69B4; /* Default background color */
+  background-color: #FF69B4;
   border-radius: 50%;
   display: flex;
   align-items: center;

@@ -24,7 +24,7 @@ function Dashboard({ users, tickets, selectedGrouping, selectedOrdering }) {
       groupedTickets[groupKey] = groupedTickets[groupKey] || [];
       groupedTickets[groupKey].push(ticket);
     });
-    
+
     Object.keys(groupedTickets).forEach((key) => {
       groupedTickets[key].sort(sortTickets);
     });

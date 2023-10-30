@@ -1,8 +1,9 @@
+// App.js
 import React, { useState, useEffect, useRef } from 'react';
+import axios from 'axios';
 import Navbar from './components/Navbar';
 import Dashboard from './components/Dashboard';
-import './App.css';
-import { fetchApi } from './actions/api'; // Import the fetchApi function
+import './App.css'
 
 function App() {
   const [tickets, setTickets] = useState([]);
@@ -12,9 +13,19 @@ function App() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
-  // Use the fetchApi function from api.jsx to fetch data
+  async function fetchApi() {
+    await axios.get('https://api.quicksell.co/v1/internal/frontend-assignment')
+      .then(response => {
+        setTickets(response.data.tickets);
+        setUsers(response.data.users);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  }
+
   useEffect(() => {
-    fetchApi(setTickets, setUsers);
+    fetchApi();
   }, []);
 
   const handleClickOutside = (event) => {
